@@ -1,0 +1,13 @@
+{
+  "name": "rankr",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/andrewboles/rankr.git",
+  "author": "<andrewboles@me.com>",
+  "license": "MIT",
+  "scripts": {
+    "server": "cd server/ && node ./bin/www",
+    "client": "cd client/ && yarn dev"
+  },
+  "dependencies": {}
+}

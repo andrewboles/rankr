@@ -20,6 +20,15 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3001",
+    methods: ["GET", "POST"]
+  }
+});
+const { socketFunctionality } = require('../utils/socket');
+socketFunctionality(io)
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -87,4 +96,8 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+  console.log("listening")
 }
+
+
+module.exports = {io}
