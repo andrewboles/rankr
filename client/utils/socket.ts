@@ -1,6 +1,6 @@
 import { SetStateAction } from "react";
 import openSocket from "socket.io-client";
-const socket = openSocket("http://localhost:8080");
+let socket
 
 // export const subscribeToTimer = ( interval: Number, cb: (arg0: SetStateAction<string>) => void) => {
 //     socket.on('timer', timestamp => cb(timestamp))
@@ -8,6 +8,7 @@ const socket = openSocket("http://localhost:8080");
 // }
 
 export const connectToSocket = () => {
+  socket =  openSocket("http://localhost:8080");
   socket.on("connect", () => console.log("connected to socket"));
   socket.on("status", (status) => {
     console.log(status);

@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useStore } from '../utils/zustand'
 import { disconnectFromSocket, connectToSocket } from '../utils/socket'
 
@@ -10,6 +10,10 @@ export default function App({ Component, pageProps }: AppProps) {
   const setStatus = useStore(state => state.setStatus)
   useEffect(()=>{
     connectToSocket()
+
+    return ()=> {
+      disconnectFromSocket()
+    }
   },[])
  
   return (
