@@ -1,6 +1,6 @@
 import { SetStateAction } from "react";
 import openSocket from "socket.io-client";
-const socket = openSocket("http://localhost:3002");
+const socket = openSocket("http://localhost:8080");
 
 // export const subscribeToTimer = ( interval: Number, cb: (arg0: SetStateAction<string>) => void) => {
 //     socket.on('timer', timestamp => cb(timestamp))
