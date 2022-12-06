@@ -1,35 +1,30 @@
 import create from "zustand";
 import { devtools, persist } from "zustand/middleware";
-import uniqid from 'uniqid'
+import uniqid from "uniqid";
 
-interface BearState {
-    userId: string | null;
-    setId: () => void;
-    status: GameStatus;
-    setStatus: (newStatus: GameStatus) => void;
+interface GameStatus {
+  gameActive: boolean;
+  voteActive: boolean;
 }
 
-export interface GameStatus {
-    gameActive: boolean;
-    voteActive: boolean;
+interface GlobalState {
+  userId: string | null;
+  status: GameStatus;
 }
 
-export const useStore = create<BearState>()(
+export const useStore = create<GlobalState>()(
   devtools(
     persist(
       (set) => ({
         userId: null,
-        setId: () => set({ userId: uniqid()}),
         status: {
-            gameActive: false,
-            voteActive: false
+          gameActive: false,
+          voteActive: false,
         },
-        setStatus: (newStatus: GameStatus) => set({status: newStatus})
       }),
       {
-        name: "bear-storage",
+        name: "socket-storage",
       }
     )
   )
 );
-

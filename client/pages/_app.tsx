@@ -7,7 +7,7 @@ import { disconnectFromSocket, connectToSocket } from '../utils/socket'
 
 export default function App({ Component, pageProps }: AppProps) {
  
-  const setStatus = useStore(state => state.setStatus)
+  
   useEffect(()=>{
     connectToSocket()
 
